@@ -1,12 +1,28 @@
 from transformers import pipeline
 
-# Load a text-generation pipeline (uses GPT-2 by default)
-generator = pipeline("text-generation", device=0)  # Use device=0 for GPU, device=-1 for CPU
-
-# Generate text
+generator = pipeline("text-generation", device=0) 
 prompt = "who is the current president of the united states?"   
-output = generator(prompt, max_length=50, num_return_sequences=1)
+output = generator(prompt, max_length=50, num_return_sequences=5, do_sample=True)
 
-print("Prompt:", prompt)
-print("Generated text:")
+
+print("Outputs: ")
 print(output[0]['generated_text'])
+# print(output[1]['generated_text'])
+# print(output[2]['generated_text'])
+# print(output[3]['generated_text'])
+# print(output[4]['generated_text'])   #as number of return sequences is 5
+
+
+
+###############################################################################################
+
+
+# from transformers import pipeline
+
+# analyzer = pipeline("sentiment-analysis", device=0)  
+# result = analyzer("how to hack facebook!") 
+
+# print(result)
+
+
+
